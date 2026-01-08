@@ -10,7 +10,7 @@ import ProductLandingPage from "./components/product/ProductLandingPage.vue";
   <Header />
   <!-- ProductList -->
    <ProductLandingPage/>
-  
+   <RouterView />
 </template>
 
 <style scoped>

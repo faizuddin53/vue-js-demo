@@ -1,7 +1,13 @@
 <template>
   <div class="headerContainer">
-    <div>
+    <div style="display: flex;">
       <h1>Aligarh Shop</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/product">Product</a>
+        <a href="/userList">User Record</a>
+        <a href="https://www.google.com/">Google</a>
+      </nav>
     </div>
     <div>
       <input class="searchBar" placeholder="Search Product" />
@@ -38,5 +44,13 @@
 }
 .headerContainer .headerButton button:hover {
   background-color: rgb(148, 99, 99);
+}
+
+.headerContainer nav{
+  margin-left: 11px;
+  margin-top: 11px;
+}
+.headerContainer nav a{
+   padding: 0px 5px 0px 5px
 }
 </style>
