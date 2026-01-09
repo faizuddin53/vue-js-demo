@@ -108,6 +108,8 @@ const product = [
   { id: 58, name: "Infinix Zero Ultra", price: 29000, category: "Mobile" },
   { id: 59, name: "iQOO Neo 7", price: 34000, category: "Mobile" },
   { id: 60, name: "Samsung Galaxy M54", price: 42000, category: "Mobile" },
+  { id: 61, name: "MacBook Pro M4", price: 180000, category: "Laptop" },
+  { id: 62, name: "MacBook Pro M5", price: 185900, category: "Laptop" },
 ];
 
 export default product;

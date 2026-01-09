@@ -1,23 +1,43 @@
 <script setup>
 import products from "../../data/product";
-import Pagination from "./Pagination.vue";
-import { ref } from "vue";
+import Pagination from "../common/Pagination.vue";
+import { computed, ref } from "vue";
 const cartList = ref([]);
 const addToCard = (cartItem) => {
   cartList.value.push(cartItem);
 };
+
+const PER_PAGE_ITEMS = 15;
+const current_page = ref(1);
+
+const gotoPage = (value) => {
+  current_page.value = value;
+};
+
+const filterData = computed(() => {
+  const start = (current_page.value - 1) * PER_PAGE_ITEMS;
+  const end = start + PER_PAGE_ITEMS;
+  return products.slice(start, end);
+});
+
+
 </script>
 
 <template>
   <div class="ProductContainer">
-    <div class="product" v-for="item in products" :key="item.id">
+    <div class="product" v-for="item in filterData" :key="item.id">
       <p>{{ item.name }}</p>
       <p>{{ item.price }}</p>
       <p>{{ item.category }}</p>
       <button @click="addToCard(item)">Add To Cart</button>
     </div>
   </div>
-   <Pagination/>
+  <Pagination
+    :perPageItem="PER_PAGE_ITEMS"
+    :currentPage="current_page"
+    :totalLength="products.length"
+    @goToPage="gotoPage"
+  />
   <h4>Cart List</h4>
   <div class="cartContainer">
     <div class="cart" v-for="cart in cartList" :key="cart.id">

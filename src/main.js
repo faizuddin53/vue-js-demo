@@ -3,7 +3,8 @@ import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import UserList from './components/UserList/userList.vue'
 import AdminUser from './components/UserList/adminUser.vue'
-
+// ✅ Font Awesome CSS (ALL icons)
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 
 const routes = [
