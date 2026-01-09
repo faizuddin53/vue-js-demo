@@ -3,7 +3,15 @@ import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import UserList from './components/UserList/userList.vue'
 import AdminUser from './components/UserList/adminUser.vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+// Icons
+import { faUser, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+
+// Add icons to library
+library.add(faUser, faCoffee, faGithub)
 
 
 const routes = [
@@ -16,4 +24,11 @@ const router = createRouter({
   routes,
 })
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+
+app.use(router)
+
+// ✅ register font awesome component
+app.component('font-awesome-icon', FontAwesomeIcon)
+
+app.mount('#app')

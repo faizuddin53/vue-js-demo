@@ -1,12 +1,11 @@
 <template>
   <div class="headerContainer">
-    <div style="display: flex;">
+    <div style="display: flex">
       <h1>Aligarh Shop</h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/product">Product</RouterLink>
+        <RouterLink to="/admin">Admin</RouterLink>
         <RouterLink to="/userList">User Record</RouterLink>
-        <RouterLink to="https://www.google.com/">Google</RouterLink>
       </nav>
     </div>
     <div>
@@ -46,11 +45,11 @@
   background-color: rgb(148, 99, 99);
 }
 
-.headerContainer nav{
+.headerContainer nav {
   margin-left: 11px;
   margin-top: 11px;
 }
-.headerContainer nav a{
-   padding: 0px 5px 0px 5px
+.headerContainer nav a {
+  padding: 0px 5px 0px 5px;
 }
 </style>
