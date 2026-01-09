@@ -1,12 +1,17 @@
 <script setup>
-import Navbar from './components/Navbar.vue';
+import { onMounted } from "vue";
+import Header from "./components/Header.vue";
+import ProductLandingPage from "./components/product/ProductLandingPage.vue";
 
 </script>
 
 <template>
-       <Navbar/>
+  <!-- Header -->
+  <Header />
+  <!-- ProductList -->
+   <ProductLandingPage/>
+   <RouterView />
 </template>
 
 <style scoped>
-
 </style>
