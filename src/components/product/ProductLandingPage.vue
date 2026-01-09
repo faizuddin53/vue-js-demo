@@ -1,5 +1,6 @@
 <script setup>
 import products from "../../data/product";
+import Pagination from "./Pagination.vue";
 import { ref } from "vue";
 const cartList = ref([]);
 const addToCard = (cartItem) => {
@@ -16,6 +17,7 @@ const addToCard = (cartItem) => {
       <button @click="addToCard(item)">Add To Cart</button>
     </div>
   </div>
+   <Pagination/>
   <h4>Cart List</h4>
   <div class="cartContainer">
     <div class="cart" v-for="cart in cartList" :key="cart.id">
