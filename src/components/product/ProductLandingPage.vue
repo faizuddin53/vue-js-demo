@@ -33,17 +33,19 @@ const addToCard = (cartItem) => {
   flex-wrap: wrap;
   align-content: flex-start;
   gap: 20px;
-  height: 300px;
+  height: 450px;
   background-color: aliceblue;
   margin-left: 6px;
   margin-right: 6px;
   padding: 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .ProductContainer .product {
   border-radius: 5px;
   background-color: #d9d9d9;
   width: 140px;
-  height: 100px;
+  height: 166px;
   text-align: center;
 }
 

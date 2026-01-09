@@ -3,10 +3,10 @@
     <div style="display: flex;">
       <h1>Aligarh Shop</h1>
       <nav>
-        <a href="/">Home</a>
-        <a href="/product">Product</a>
-        <a href="/userList">User Record</a>
-        <a href="https://www.google.com/">Google</a>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/product">Product</RouterLink>
+        <RouterLink to="/userList">User Record</RouterLink>
+        <RouterLink to="https://www.google.com/">Google</RouterLink>
       </nav>
     </div>
     <div>
