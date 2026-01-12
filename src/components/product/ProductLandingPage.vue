@@ -1,8 +1,18 @@
 <script setup>
-import products from "../../data/product";
 import Pagination from "../common/Pagination.vue";
 import { computed, ref } from "vue";
+import { useRouter  } from "vue-router";
+import { useProduct } from "../composables/useProduct";
+
+const productStore = useProduct();
+
+const products = computed(() => {
+    return productStore.getProduct();
+})
+
+const router = useRouter();
 const cartList = ref([]);
+
 const addToCard = (cartItem) => {
   cartList.value.push(cartItem);
 };
@@ -17,13 +27,24 @@ const gotoPage = (value) => {
 const filterData = computed(() => {
   const start = (current_page.value - 1) * PER_PAGE_ITEMS;
   const end = start + PER_PAGE_ITEMS;
-  return products.slice(start, end);
+  return products.value.slice(start, end);
 });
+
+
+
+const addProduct = () => {
+  router.push("/addproduct")
+}
 
 
 </script>
 
 <template>
+  <div class="addproduct_container">
+     <button @click="addProduct">Add Product</button>
+  </div>
+
+  
   <div class="ProductContainer">
     <div class="product" v-for="item in filterData" :key="item.id">
       <p>{{ item.name }}</p>
@@ -31,6 +52,9 @@ const filterData = computed(() => {
       <p>{{ item.category }}</p>
       <button @click="addToCard(item)">Add To Cart</button>
     </div>
+    <h1 v-if="filterData?.length === 0 ">
+        No Product Added Here please use Add product and add Product
+    </h1>
   </div>
   <Pagination
     :perPageItem="PER_PAGE_ITEMS"
@@ -38,15 +62,6 @@ const filterData = computed(() => {
     :totalLength="products.length"
     @goToPage="gotoPage"
   />
-  <h4>Cart List</h4>
-  <div class="cartContainer">
-    <div class="cart" v-for="cart in cartList" :key="cart.id">
-      <p>{{ cart.name }}</p>
-    </div>
-  </div>
-  <hr />
-  <h4>Total selected Cart- {{}}</h4>
-  <h4>Total Price - {{}}</h4>
 </template>
 <style scoped>
 .ProductContainer {
@@ -62,6 +77,7 @@ const filterData = computed(() => {
   padding: 8px;
   overflow-x: hidden;
   overflow-y: auto;
+  margin-top: 10px;
 }
 .ProductContainer .product {
   border-radius: 5px;
@@ -71,15 +87,8 @@ const filterData = computed(() => {
   text-align: center;
 }
 
-.cartContainer {
+.addproduct_container{
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.cart {
-  padding-left: 5px;
-  background-color: bisque;
-  width: 100%;
-  height: 44px;
+  justify-content: end;
 }
 </style>

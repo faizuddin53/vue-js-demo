@@ -1,15 +1,17 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import UserList from './components/UserList/userList.vue'
-import AdminUser from './components/UserList/adminUser.vue'
 // ✅ Font Awesome CSS (ALL icons)
 import '@fortawesome/fontawesome-free/css/all.min.css'
+import CartList from './components/product/CartList.vue'
+import ProductLandingPage from './components/product/ProductLandingPage.vue'
+import AddProduct from './components/product/AddProduct.vue'
 
 
 const routes = [
-  { path: '/userList', component: UserList },
-  { path: '/admin', component: AdminUser },
+  { path : '/', component : ProductLandingPage },
+  { path : '/addproduct', component : AddProduct},
+  { path: "/cart", component : CartList}
 ]
 
 const router = createRouter({
