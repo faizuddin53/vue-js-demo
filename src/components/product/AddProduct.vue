@@ -6,25 +6,30 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const useProductStore = useProduct();
 const form = ref({
+  id: null,
   name: "",
   price: null,
   category: "",
+  description:''
 });
 
 const productAdd = () => {
   if (
     form.value.name == "" ||
     form.value.price == null ||
-    form.value.category === ""
+    form.value.category === "" || form.value.description === ""
   ) {
     alert("All feild are reuired")
     return;
   }
+  form.value.id = `PI-${Date.now()}`
   useProductStore.addProduct(form.value);
   form.value = {
+    id: null,
     name: "",
     price: null,
     category: "",
+    description:""
   };
   router.push("/");
 };
@@ -37,6 +42,8 @@ const productAdd = () => {
     <input v-model="form.name" type="text" id="pname" />
     <lable for="price">Product Price</lable>
     <input v-model="form.price" type="number" id="pname" />
+    <lable for="pdesc">Product Description</lable>
+    <textarea v-model="form.description" id="pdesc" />
     <lable for="pcategory">Product Category</lable>
     <select id="pcategory" v-model="form.category">
       <option value="electronics">Electronics</option>
@@ -74,7 +81,7 @@ label {
 }
 
 input,
-select {
+select , textarea{
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 18px;

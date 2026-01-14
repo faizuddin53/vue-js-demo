@@ -36,6 +36,11 @@ const addProduct = () => {
   router.push("/addproduct")
 }
 
+const fetchProductDetails = (id) => {
+  const productId = id
+  router.push(`/productDetails/${productId}`)
+  // router.push({path:'/productDetails', params:{productId } })
+}
 
 </script>
 
@@ -46,10 +51,10 @@ const addProduct = () => {
 
   
   <div class="ProductContainer">
-    <div class="product" v-for="item in filterData" :key="item.id">
+    <div class="product" v-for="item in filterData" :key="item.id" @click="fetchProductDetails(item.id)">
       <p>{{ item.name }}</p>
       <p>{{ item.price }}</p>
-      <p>{{ item.category }}</p>
+      <p>{{ item.description }}</p>
       <button @click="addToCard(item)">Add To Cart</button>
     </div>
     <h1 v-if="filterData?.length === 0 ">
