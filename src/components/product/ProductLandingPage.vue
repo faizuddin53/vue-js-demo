@@ -11,10 +11,10 @@ const products = computed(() => {
 })
 
 const router = useRouter();
-const cartList = ref([]);
+
 
 const addToCard = (cartItem) => {
-  cartList.value.push(cartItem);
+   productStore.moveToCart(cartItem)
 };
 
 const PER_PAGE_ITEMS = 15;
