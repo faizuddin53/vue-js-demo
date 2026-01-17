@@ -1,20 +1,19 @@
 <script setup>
 import Pagination from "../common/Pagination.vue";
 import { computed, ref } from "vue";
-import { useRouter  } from "vue-router";
+import { useRouter } from "vue-router";
 import { useProduct } from "../composables/useProduct";
 
 const productStore = useProduct();
 
 const products = computed(() => {
-    return productStore.getProduct();
-})
+  return productStore.getProduct();
+});
 
 const router = useRouter();
 
-
 const addToCard = (cartItem) => {
-   productStore.moveToCart(cartItem)
+  productStore.moveToCart(cartItem);
 };
 
 const PER_PAGE_ITEMS = 15;
@@ -30,35 +29,36 @@ const filterData = computed(() => {
   return products.value.slice(start, end);
 });
 
-
-
 const addProduct = () => {
-  router.push("/addproduct")
-}
+  router.push("/addproduct");
+};
 
 const fetchProductDetails = (id) => {
-  const productId = id
-  router.push(`/productDetails/${productId}`)
-  // router.push({path:'/productDetails', params:{productId } })
-}
-
+  const productId = id;
+  // router.push(`/productDetails/${productId}`)
+  router.push({ name: "productDetails", params: { id: productId } });
+};
 </script>
 
 <template>
   <div class="addproduct_container">
-     <button @click="addProduct">Add Product</button>
+    <button @click="addProduct">Add Product</button>
   </div>
 
-  
   <div class="ProductContainer">
-    <div class="product" v-for="item in filterData" :key="item.id" @click="fetchProductDetails(item.id)">
+    <div
+      class="product"
+      v-for="item in filterData"
+      :key="item.id"
+      @click="fetchProductDetails(item.id)"
+    >
       <p>{{ item.name }}</p>
       <p>{{ item.price }}</p>
       <p>{{ item.description }}</p>
       <button @click="addToCard(item)">Add To Cart</button>
     </div>
-    <h1 v-if="filterData?.length === 0 ">
-        No Product Added Here please use Add product and add Product
+    <h1 v-if="filterData?.length === 0">
+      No Product Added Here please use Add product and add Product
     </h1>
   </div>
   <Pagination
@@ -92,7 +92,7 @@ const fetchProductDetails = (id) => {
   text-align: center;
 }
 
-.addproduct_container{
+.addproduct_container {
   display: flex;
   justify-content: end;
 }

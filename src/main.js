@@ -13,11 +13,16 @@ const routes = [
   { path: "/", component: ProductLandingPage },
   {
     path: "/:pathMatch(.*)*",
+    name: "NotFound",
     component: PageNotFound,
   },
-  { path: "/addproduct", component: AddProduct },
-  { path: "/productDetails/:id", component: ProductDetails },
-  { path: "/cart", component: CartList },
+  { path: "/addproduct", name: "addProduct", component: AddProduct },
+  {
+    path: "/productDetails/:id",
+    name: "productDetails",
+    component: ProductDetails,
+  },
+  { path: "/cart", name: "cart", component: CartList },
 ];
 
 const router = createRouter({
