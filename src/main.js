@@ -8,6 +8,8 @@ import ProductLandingPage from "./components/product/ProductLandingPage.vue";
 import AddProduct from "./components/product/AddProduct.vue";
 import ProductDetails from "./components/product/ProductDetails.vue";
 import PageNotFound from "./components/PageNotFound.vue";
+import Login from "./components/auth/Login.vue";
+import SignUp from "./components/auth/SignUp.vue";
 
 const routes = [
   { path: "/", component: ProductLandingPage },
@@ -16,6 +18,8 @@ const routes = [
     name: "NotFound",
     component: PageNotFound,
   },
+  {path :'/login', name:"login", component : Login},
+  {path :'/signup', name:"signUp", component : SignUp},
   { path: "/addproduct", name: "addProduct", component: AddProduct },
   {
     path: "/productDetails/:id",

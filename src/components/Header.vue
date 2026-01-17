@@ -11,7 +11,7 @@
     </div>
     <div class="headerButton">
       <button style="margin-right: 10px" @click="goToCart">Cart</button>
-      <button>Login</button>
+      <button @click="Login">Login</button>
     </div>
   </div>
 </template>
@@ -22,6 +22,10 @@ const router = useRouter()
 
 const goToCart = () => {
     router.push('/cart')
+}
+
+const Login = () =>{
+   router.push("/login")
 }
 </script>
 
