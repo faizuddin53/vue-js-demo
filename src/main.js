@@ -7,9 +7,14 @@ import CartList from "./components/product/CartList.vue";
 import ProductLandingPage from "./components/product/ProductLandingPage.vue";
 import AddProduct from "./components/product/AddProduct.vue";
 import ProductDetails from "./components/product/ProductDetails.vue";
+import PageNotFound from "./components/PageNotFound.vue";
 
 const routes = [
   { path: "/", component: ProductLandingPage },
+  {
+    path: "/:pathMatch(.*)*",
+    component: PageNotFound,
+  },
   { path: "/addproduct", component: AddProduct },
   { path: "/productDetails/:id", component: ProductDetails },
   { path: "/cart", component: CartList },
